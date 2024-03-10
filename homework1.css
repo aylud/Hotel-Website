@@ -1,0 +1,330 @@
+/* Place your CSS styles in this file */
+
+* { /* general formatting */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', sans-serif;
+}
+
+header { /* adjusting header banner to look nice */ 
+    position: fixed; /* ensures that the banner stays fixed on the screen */
+    top: 0; /* makes the banner fixed on the top of the screen aligning with left as well */
+    left: 0;
+    width: 100%; /* causes the banner to take up the whole width */
+    padding: 20px 100px; /*adding negative space around the banner */
+    background: #232B2B; /*banner color*/
+    display: flex; /* creating a flexbox container for formatting */
+    justify-content: space-between; /* spaces out items in the container evenly */
+    align-items: center; /* adjusting items to the center*/
+    z-index: 99; /* works kind of like a layer ensuring that the header is above all content */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.2); /* shadow under the header for aesthetic purposes */
+
+}
+
+.header-content { /*formatting/aligning and content in the header itself rather than the whole banner */
+    display: flex; /* creating a flexbox container for formatting */
+    align-items: center; /* adjusting where text will be */
+    gap: 20px; /* Adjust the space between the logo and date */
+
+}
+
+.logo { /* keeping the logo consistent so it doesnt get smooshed */
+    height: 50px; /* or whatever height you prefer */
+    width: 50px; /* maintains aspect ratio */
+}
+
+
+#dynamicData { /* adjusting the way the date looks in the header and adjusting spacing again */
+    color: #95D178; /* Or any color you prefer */
+    margin-left: 0px; /* Pushes it to the far right; adjust as necessary */
+    padding-left: 20px; /* Optional: Adds some spacing between the last nav item and the dynamic data */
+}
+
+.navigation a { /*user interaction with the nav bar and making it look nice this applies styling to all tags in the nav class */
+    position: relative; /*interacts with elements in the nav bar regarding placement */
+    font-size: 1.1em;
+    color: #95D178; /* text color for the whole navbar */
+    text-decoration: none; /* removes underline from links */
+    font-weight: 500; /*slightly bolding the font */
+    margin-left: 30px; /* adding a little space to left to keep items spaced to my preference */
+}
+
+.navigation a::after { /* creating a pseudo element to add an interaction effect (learned this one from youtube) */
+    content: ""; /* required to make the pseudo element exist/display */
+    position: absolute; /* positions the element at the bottom of the anchor tag creating an effect when i hover over the element*/
+    left: 0; /* positioning the underline effect under the text */
+    bottom: -4px;
+    width: 100%; /* makes the underline the whole width of the anchor tag (similar to how a container works)*/
+    height: 2px; /* thickness of the underline */
+    background: #95D178;
+    border-radius: 5px; /* rounded edge of underline */
+    transform: scaleX(0); /* scales the underline to be initially invisible without hovering */
+    transition: transform .5s; /* animates the scaling effect over half a second */
+}
+
+.navigation a:hover::after {
+    transform: scaleX(1); /* scales the underline to be visible after hover */
+}
+
+.navigation .btnavailable-popup {
+    width: 150px;
+    height: 40px; /* creating button size */
+    background: transparent; /* transparent background on button */
+    border: 2px solid #95D178; /* gives border to the text space to be treated as a button */
+    outline: none; /* no outline */
+    border-radius: 6px; /* rounds the border box */
+    cursor: pointer; /*changes cursor to pointer to indicate interactive nature*/
+    font-size: 1.1em; /*font size of button*/
+    color: #95D178;
+    font-weight: 500;
+    margin-left: 30px;
+}
+.navigation .btnavailable-popup:hover {
+    background: #95D178;        /* changes the background to a solid color on hover */
+    color: #FFFFFF;             /* changes color to white so text does't disappear */
+    border: 2px solid #FFFFFF; /*changes border to white indicate the state change on hover */
+    transition: background 0.3s ease; /* transition for the background color change */
+}
+
+html, body {
+    height: 100%; /*makes  sure that the html page takes the full height of the screen */
+    margin: 0; /* removes any default margins a browser might apply */
+}
+
+body {
+    padding-top: 80px; /*separating the body from the header */
+    display: flex; /*creating flexbox containers */
+    flex-direction: column; /*sets axis vertically and arranges them from top to bottom */
+    justify-content: space-between; /*spaces elements out evenly */
+    align-items: center; /* adjusting where text will be */
+    min-height: calc(100vh-80px); /*sets the min height for the body to the full height lowered 80 pixels */
+    background: #423e3e; /*sets the background of the pages to grey  */
+}
+main {
+    flex: 1; /* allows the main content to grow and push the footer down */
+}
+
+.guest-information h1{
+    color: #95D178; /* setting the look of the heading guest registration*/* 
+    font-size: 1.4em;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-align: start; /* adjusting where text will be */
+    font-family: 'Playfair Display', serif; /* change the font */
+
+}
+
+.guest-information, form {
+    /*border: 1px solid #ccc;  adds a border around the form for visibility */
+    background: #232B2B;
+    padding: 30px; /* adds some spacing inside the form */
+
+}
+
+.input-row {
+    display: flex; /*creating a container to conform the fields into rows and allowing two fields to align horizontally */
+    justify-content: start;
+    gap: 20px; /* maintains spacing between items */
+    margin-bottom: 20px; /* adding space below the fields*/
+}
+
+.input-box {
+    flex-grow: 1;
+    flex-basis: calc(33.3% - 10px); /* adjust this calculation based on the gap and number of items */
+    
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column; /* aligns children (label and input/select) vertically */
+    width: 100%; /* ensures the input field takes full width of its parent .input-box */
+
+}
+
+#mi-field {
+    flex: 0 1 50px; /* keeps MI field at desired width */
+    margin-right: 20px; /* ensures space to the right; adjust as needed */
+}
+
+#mi-field, #lname-field {
+    margin-right: 0; /* removes extra margin from the last item if causing layout shift */
+}
+
+.input-field input {
+    width: 100%; /* ensures input elements fill their containers */
+    box-sizing: border-box; /* includes padding and border in width calculation */
+    margin-top: 10px;
+}
+
+.gender-box {
+    margin-top: 20px;
+}
+
+.gender-box h3 {
+    color: #95D178;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.gender-option {
+    display: flex;
+    align-items: center; /* adjusting where text will be */
+    column-gap: 50px; /* adjust space between gender options */
+    flex-wrap: wrap;
+}
+
+.gender {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.gender input {
+    accent-color: #95D178;
+}
+
+.gender input, .gender label {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.guest-information label {
+    color: #95D178;
+
+}
+
+.guest-information input[type="text"],
+.guest-information input[type="email"],
+.guest-information input[type="password"],
+.guest-information input[type="tel"],
+.guest-information select {
+    background-color: transparent; /* makes the background of the input transparent */
+    color: #95D178; /* text color */
+    border: 2px solid #95D178; /* field outline color */
+    padding: 8px; /* adds some padding inside the input fields */
+    /* border-radius: 4px;  adds rounded corners to the input fields */
+}
+
+.guest-information input[type="text"]:focus,
+.guest-information input[type="email"]:focus,
+.guest-information input[type="password"]:focus,
+.guest-information input[type="tel"]:focus,
+.guest-information select:focus {
+    outline: none; /* removes the default browser outline on focus */
+    border-color: #ffffff; /* change the border color on focus to something else */
+
+}
+.guest-information select option {
+    color: #000; /* ensures the dropdown options text is black */
+    background: #FFF; /* optionally set a background color for options for better readability */
+}
+
+.input-field select {
+    margin-top: 10px; /* adds space above the select dropdown */
+}
+.guest-information .submit-btn {
+    width: 150px;
+    height: 40px; /* creating button size */
+    background: transparent; /* transparent background on button */
+    border: 2px solid #95D178;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #95D178;
+    font-weight: 500;
+    margin-top: 30px;
+
+}
+
+.guest-information .submit-btn:hover {
+    background: #95D178;        /* changes the background to a solid color on hover */
+    color: #FFFFFF;             /* changes color to white so text does't disappear */
+    border: 2px solid #FFFFFF;
+    transition: background 0.3s ease; /* transition for the background color change */
+}
+
+footer {
+    background-color: #232B2B;
+    color: #95D178;
+    padding: 20px 100px;
+    display: flex; /* use flexbox to layout children horizontally */
+    justify-content: space-between; /* distribute space between items */
+    align-items: center; /* align items vertically */
+    width: 100%;
+}
+
+.footer-content {
+    display: flex; /* ensure this also uses flex to layout its children horizontally */
+    width: 100%; /* take full width of the footer */
+    justify-content: space-between; /* distribute space between sections */
+}
+
+.footer-section {
+    display: flex; 
+    flex-direction: column; /* stack items vertically within each section */
+    padding: 0 15px; /* add some padding around each section */
+}
+
+.footer-section h3, .footer-section p, .footer-section ul {
+    margin: 5px 0; /* add a little margin to separate items within each section */
+    font-family: 'Playfair Display', serif; /* change font */
+}
+
+.footer-section ul {
+    list-style: none; /*styling links into list in the footer and giving hover interactions */
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #95D178;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff;
+}
+
+.guest-information textarea {
+    background-color: transparent; 
+    color: #95D178; 
+    border: 2px solid #95D178; 
+    padding: 8px; /* padding inside the textarea */
+    width: 100%; /* ensure it takes the full width of its container */
+    box-sizing: border-box; /* ensures padding does not add to the total width */
+    resize: vertical; /* allows vertical resizing, or 'none' to disable resizing */
+    margin-top: 10px;
+}
+
+/* Basic styling for the slider */
+input[type="range"] {
+    width: 100%; /* full width to match the form's layout */
+    cursor: pointer; /*  indicate interactiveness */
+}
+
+#guestsValue {
+    color: #95D178; 
+    font-weight: bold; 
+    font-family: monospace;
+    font-size: 1.1em;
+}
+.checkbox-field {
+    margin: 10px 0;
+}
+
+.checkbox-field input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.checkbox-field label {
+    display: inline-block;
+    color: #95D178; 
+}
+
+.checkbox-field label a {
+    color: #95D178; /* ensure link colors are also consistent */
+    text-decoration: underline; /* makes it clear they are clickable links */
+}
