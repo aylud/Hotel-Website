@@ -1,0 +1,327 @@
+    <!doctype html>
+<!--Name: Duy La
+Name of file: hw4.html
+Date created: April 29, 2024
+Date last edited: April 30, 2024
+Description: Learning HTML, CSS, and JS by creating various parts
+of the hotel registration experience and stuggling :)
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hotel Website Registration</title>
+
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="./hw4.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <main>
+            <header>
+                <!-- created header bar -->
+                <div class="header-content">
+                    <img src="../hw-1/logo1.png" alt="Logo" class="logo">
+                    <!-- dynamic data is used to get current date with JS -->
+                    <div id="dynamicData"></div>
+                </div>
+                <!-- buttons for the header -->
+                <nav class="navigation">
+                    <a href="#">Home</a>
+                    <button class="btnavailable-popup">Availability</button>
+                    <a href="#">Menu</a>
+
+                </nav>
+            </header>
+            <!-- registration form -->
+            <div class="guest-information">
+                    <form id="registrationForm" action="../hw-1/homework1-thankyou.html" method="get">
+                        <h1>Guest Registration</h1>
+                        <h1 id="greeting"></h1>
+                        <label>Full Name</label>
+                        <!-- created a div class to format rows, this one is special since it has
+                        three fields and values are required -->
+                        <div class="input-row">
+                            <div class="input-box" >
+                                <div class="input-field">
+                                    <input type="text" placeholder="First Name" maxlength="30" required title="Enter your first name. Use letters, apostrophes, and dashes only." id="fname-field">
+                                </div>
+                            </div>
+                            <div class="input-box" id="mi-field">
+                                <div class="input-field">
+                                    <input type="text" placeholder="MI" maxlength="1" title="Enter your middle initial (optional). Letters only." >
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <input type="text" placeholder="Last Name" maxlength="30" required title="Enter your last name. Letters, apostrophes, numbers (2-5 for suffixes), and dashes only." id="lname-field">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Email Address</label>
+                                    <input type="email" name="email" placeholder="Enter email address" required title="Enter a valid email address here">
+                                    <!-- email type checks input validity for emails -->
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Phone Number</label>
+                                    <input type="tel" name="phone" placeholder="123-456-7890" required title="Enter your phone number in 123-456-7890 format here" pattern="\d{3}-\d{3}-\d{4}">
+                                    <!-- telephone type which is not different from text-type except on mobile which
+                                    which brings the keypad up. this also has a pattern to require a format -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Date of Birth</label>
+                                    <input type="date" name="dob" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" required title="Enter a valid date of birth in MM/DD/YYYY format here" id="dob">
+                                     <!--also has a pattern where \d{x}/ means it requires a digit and the
+                                     number in the curly is the amount of symbols required  -->
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Social Security Number</label>
+                                    <input type="password" name="ssn" placeholder="123-45-6789" required title="Enter your SSN with dashes included" pattern="\d{3}-\d{2}-\d{4}">
+                                     <!--password type which obscures information in the field  -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>City</label>
+                                    <input type="text" name="city" placeholder="Enter city" maxlength="30" required title="Enter your city of residence here">
+                                     <!--like with most text input types here there is a maxlength to limit
+                                     bad user info  -->
+                                </div>
+                            </div>
+                            <!-- drop down field for states -->
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>State</label>
+                                    <select name="state" required title="Please select your state of residence in the drop-down menu" id="state">
+                                         <!-- select tag gives me the drop down menu normally used for state 
+                                         selection which is then populated with option values -->
+                                        <option value="" selected="selected">Select a State</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="DC">District Of Columbia</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="PR">Puerto Rico</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Address</label>
+                                    <input type="text" name="address" placeholder="Enter street address" maxlength="30" required title="Enter your address here">
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Postal Code</label>
+                                    <input type="text" name="zip" placeholder="Enter zip/postal code" required title="Enter your postal code here, E.g. 12345 or 12345-0000">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gender-box">
+                            <!-- put this in a different class to help with formatting -->
+                            <!-- input type is radio for radio buttons :) -->
+                            <h3>Gender</h3>
+                            <div class="gender-option">
+                                <div class="gender">
+                                    <input type="radio" id="gender-male" name="gender" value="male" title="Select here if your gender is male">
+                                    <label for="gender-male">Male</label>
+                                </div>
+                                <div class="gender">
+                                    <input type="radio" id="gender-female" name="gender" value="female" title="Select here if your gender is female">
+                                    <label for="gender-female">Female</label>
+                                </div>
+                                <div class="gender">
+                                    <input type="radio" id="gender-other" name="gender" value="other" checked title="Select here if you do not prefer to specify"> 
+                                    <label for="gender-other">Prefer not to say</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                             <!-- input type range creates a slider ranging from 1-10 with a default of 2
+                             slider updates the value in span with guestsValue id and does so with the oninput attribute
+                             which executes JS to set the span to whatever value the slider is on to my understanding  -->
+                            <label for="guests">Number of Guests: <span id="guestsValue" style="color: #95D178;">2</span></label>
+                            <input type="range" id="guests" name="guests" min="1" max="10" value="2" oninput="document.getElementById('guestsValue').innerText = this.value" title="Slide to select number of guests">
+                        </div>
+
+                        <div class="input-box">
+                            <div class="input-field">
+                                <label for="Accommodations">Additional Notes</label>
+                                <textarea id="accommodations" name="accommodations" rows="3" cols="50" placeholder="Please let us know of any accommodations you would like in your future stays with us! (eg. wheelchair accessibility)" title="Enter any special accomodations here"></textarea>
+                                <!-- text area that is set to 3 rows and 50 columns although it may be affected by the display flexing -->
+                            </div>
+                        </div>
+                        <h1>Sign-up Information</h1>
+                        <div class="input-row">
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>User ID</label>
+                                    <input type="text" name="userid" placeholder="Enter user id" maxlength="30" required title="5 to 30 characters. Letters, numbers, underscores, or dashes only. No special characters or spaces. First character cannot be a number." id="userid">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- password names will be referenced in JS for password checking -->
+                        <div class="input-row">
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Password</label>
+                                    <input type="password" id="password" name="password" placeholder="Enter password" required title="8 to 30 characters long with at least 1 uppercase letter, 1 number, and 1 special character. No quotes allowed.">
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-field">
+                                    <label>Re-enter Password</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter password" required title="Verify your password here">
+                                </div>
+                            </div>    
+                        </div>       
+                        <!-- creating 3 checkboxes with input type checkbox and setting to required and making them links to
+                        placeholders -->
+                        <div class="input-box">
+                            <div class="checkbox-field">
+                                <input type="checkbox" id="termsConditions" name="termsConditions" required title="Check this box to agree to Terms and Conditions">
+                                <label for="termsConditions">I agree to the <a href="URL_TO_TERMS" target="_blank">Terms and Conditions</a>.</label>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div class="checkbox-field">
+                                <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required title="Check this box to agree to our Privacy Policy">
+                                <label for="privacyPolicy">I acknowledge the <a href="URL_TO_PRIVACY_POLICY" target="_blank">Privacy Policy</a>.</label>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div class="checkbox-field">
+                                <input type="checkbox" id="rememberMe" name="rememberMe" required title=" Remember me">
+                                <label for="rememberMe">Remember me</label>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div class="checkbox-field">
+                                <input type="checkbox" id="subscribeNewsletter" name="subscribeNewsletter" title="Check this box to subscribe to our Newsletter">
+                                <label for="subscribeNewsletter">Subscribe to our newsletter for exclusive offers.</label>
+                            </div>
+                        </div>
+
+                        <!-- reset button resets form values and submit button sends form values, review button creates a table to review data for submission -->
+                        <button type="reset" value="Reset" class="submit-btn">Reset</button>
+                        <input type="submit" value="Submit" class="submit-btn">
+                        <button type="button" onclick="reviewFormData()" class="submit-btn">Review</button>
+                        <button id="newUser" >Not you? Click here to start as a NEW USER</button>
+
+                        <div id="reviewArea" style="display:none; margin-top: 20px;"></div>
+
+                        <h1>Check Out Our Location:</h1>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6930.0723591728765!2d-95.34410302366186!3d29.718711233929117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640be50d71df757%3A0xf6d9c8cfe7e2dac3!2sHilton%20University%20of%20Houston!5e0!3m2!1sen!2sus!4v1714515525942!5m2!1sen!2sus" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" id = "hotellocation"></iframe>"
+                        <!-- an iframe where i embed a source given by google maps on a potential hotel location giving it an id to style in css -->
+                    </form>
+                    
+
+            </div>
+
+        </main>
+        <!-- currently my footer that includes links to placeholders, company name and logo -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>La Hotel Group</h3>
+                    <img src="../hw-1/logo1.png" alt="Logo" class="logo">
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Our Locations</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: contact@example.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+            </div>
+        </footer>
+
+
+
+        <!-- Load external JavaScript -->
+        <script src="./hw4.js"></script>
+        <script src="./hw4-cookies.js"></script>
+        
+    </body>
+
+</html>
